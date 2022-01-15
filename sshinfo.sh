@@ -34,6 +34,11 @@ SWAP_TOTAL=`free -m | grep Swap | awk '{print $2}'`
 NUM_PROCS=`ps aux | wc -l`
 IPADDRESS=`hostname --all-ip-addresses`
 SystemLoad=$(cat /proc/loadavg | cut -d" " -f1);
+SDB1SIZE=`df -h /dev/sdb2 | grep /dev/sdb2 | awk '{print $2}'`
+SDB1OST=`df -h /dev/sdb2 | grep /dev/sdb2 | awk '{print $4}'`
+SDB1MOUNT=`df -h /dev/sdb2 | grep /dev/sdb2 | awk '{print $6}'`
+SDB1PERC=`df -h /dev/sdb2 | grep /dev/sdb2 | awk '{print $5}'`
+
 #
 echo -e $tcLtG " $TIME $tcORANGE $USER"
 echo -e $tcLtG " - Хост :$tcW `hostname -f`"
@@ -44,7 +49,8 @@ echo -e $tcLtG " - Пользователи : Авторизованных по�
 echo -e $tcLtG " - Время на сервере : `date +"%A, %d %B %Y г., %T"`"
 echo -e $tcLtP " - Загрузка системы : $SYS_LOADS % CPU/ $NUM_PROCS запущенных процессов"
 echo -e $tcLtBL " - Память, RAM : Исп.: $MEMORY_USED Мб / Всего: $MEMORY_TOTAL Мб"
-df -h
+echo -e $tcLtGRN " Диск Размер Доступно %"
+echo -e $tcLtGRN " sdb2: $SDB1SIZE   $SDB1OST  $SDB1PERC"
 echo -e $tcRESET ""
 #
 
