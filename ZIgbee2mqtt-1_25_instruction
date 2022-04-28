@@ -1,0 +1,46 @@
+Инструкция по установке zigbee2mqtt версии c 1.25 и выше. Для Home Assistant!
+
+ВНИМАНИЕ!!! На момент первого запуска zigbee2mqtt крайне рекомендую перепрошить стик и перезагрузить комп в котором УЖЕ воткнут стик,и только потом запускать zigbee2mqtt!
+NVRAM стика при первой перепрошивке сохранять не рекомендуется, при прошивке он очищается, а это как раз и нужно для стика с завода!
+Если что-то не пошло, смотрите логи аддонов ( Не в аддонах, а в Конфигурация - Дополнения, резервные копии и Supervisor).
+
+Для виртуальных машин смотрите тут :  https://youtu.be/ULPXB-F278U
+Перепрошивка стика : https://youtu.be/Y7XDC9oer5I
+
+
+1. Идете в Конфигурация - Дополнения, резервные копии и Supervisor, там находите Магазин дополнений, находите и устанавливаете Mosquitto broker
+2. В настройках Mosquitto broker у вас не должно быть ничего более чем вот это:
+
+certfile: fullchain.pem
+customize:
+  active: false
+  folder: mosquitto
+keyfile: privkey.pem
+logins: []
+require_certificate: false
+
+3. Идете в Конфигурации - Устройства и службы и там ищете интеграцию Mosquitto broker и включаете ее.
+4. Идете в Конфигурация - Дополнения, резервные копии и Supervisor, там находите Магазин дополнений и в правом верхнем углу нажимаете на 3 точки, выбираете Репозитории.
+   И добавляете репозиторий 
+   
+   https://github.com/zigbee2mqtt/hassio-zigbee2mqtt
+
+5. После этого у вас появится возможность установить аддон zigbee2mqtt
+6. После устанвоки аддона перед его запуском заходите в настройки аддона и добавляете конфигурацию вот таким образом:
+
+data_path: /config/zigbee2mqtt
+socat:
+  enabled: false
+  master: pty,raw,echo=0,link=/tmp/ttyZ2M,mode=777
+  slave: tcp-listen:8485,keepalive,nodelay,reuseaddr,keepidle=1,keepintvl=1,keepcnt=5
+  options: '-d -d'
+  log: false
+mqtt: {}
+serial:
+  port: /dev/ttyUSB0
+  
+
+Учтите, что /dev/ttyUSB0 - это для стиков на микроконтроллере cc2652, и точно не для виртуальных машин.
+
+Для виртуальных машин смотрите тут :  https://youtu.be/ULPXB-F278U
+Перепрошивка стика : https://youtu.be/Y7XDC9oer5I
