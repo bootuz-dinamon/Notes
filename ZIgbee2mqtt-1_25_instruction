@@ -5,6 +5,8 @@ NVRAM стика при первой перепрошивке сохранять
 Прошивку для стика на сс2652 вы найдете вот тут - https://github.com/Koenkk/Z-Stack-firmware/tree/master/coordinator/Z-Stack_3.x.0/bin ...
 Для других стиков ищите тут - https://github.com/Koenkk/Z-Stack-firmware/tree/master/coordinator
 
+ВНИМАНИЕ!! Если у вас уже стоял zigbee2mqtt, то удаление этого файла /config/zigbee2mqtt/coordinator_backup.json часто снимает сразу кучу проблем!
+
 Если что-то не пошло, смотрите логи аддонов ( Не в аддонах, а в Конфигурация - Дополнения, резервные копии и Supervisor).
 
 Для виртуальных машин смотрите тут :  https://youtu.be/ULPXB-F278U
