@@ -28,11 +28,9 @@ const fzLocal = {
                             energy: value / 100
                         };
                     case 6:   
-//                     return {
-//                            current: (value[4] / 1000), voltage: (value[1]), power: value[7]
-//                        };
-                        meta.logger.warn(`zigbee-herdsman-converters:: NOT RECOGNIZED DP ` +
-                            `#${dp} with data ${JSON.stringify(msg.data)} VALUE = ${value}`);
+                     return {
+                            current: (value[4] / 1000), voltage: (value[1]), power: value[7]
+                        };
                     case 10:{
                         meta.logger.warn(`zigbee-herdsman-converters:: NOT RECOGNIZED DP ` +
                             `#${dp} with data ${JSON.stringify(msg.data)} VALUE = ${value}`);
