@@ -29,7 +29,7 @@ const fzLocal = {
                         };
                     case 6:   
                      return {
-                            current: (value[4] / 1000), voltage: (value[1]), power: value[7]
+                            current: ((value[4] | value[3] << 8) / 1000), voltage: ((value[1] | value[0] << 8) / 10), power: value[7]
                         };
                     case 10:{
                         meta.logger.warn(`zigbee-herdsman-converters:: NOT RECOGNIZED DP ` +
