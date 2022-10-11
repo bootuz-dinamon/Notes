@@ -1,4 +1,5 @@
 # sudo nano /etc/profile.d/sshinfo.sh
+#  nano /etc/motd
 
 tcLtG="\033[00;37m" # LIGHT GRAY
 tcDkG="\033[01;30m" # DARK GRAY
